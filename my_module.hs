@@ -6,9 +6,10 @@ qsort (h:t) =
 	++ qsort [x | x <- t, x > h]
 
 primes :: Int -> [Integer]
-primes count =
-	take count
-	[x | x <- [2,3..], null [y | y <- [2..(div x 2)], mod x y == 0]]
+primes count =	take count primes'
+
+primes' :: [Integer]
+primes' =  [x | x <- [2,3..], null [y | y <- [2..(div x 2)], mod x y == 0]]
 
 pairs :: [a] -> [(a,a)]
 pairs list = pairs' list []
@@ -26,3 +27,7 @@ fib_list' 0 list = reverse list
 fib_list' n [] = fib_list' (n-1) (1:[])
 fib_list' n (1:[]) = fib_list' (n-1) (1:1:[])
 fib_list' n list@(a:b:tl) = fib_list' (n-1) ((a+b):list)
+
+pairs2 :: [a] -> [(a,a)]
+pairs2 [] = []
+pairs2 list@(_:tl) = zip list tl
