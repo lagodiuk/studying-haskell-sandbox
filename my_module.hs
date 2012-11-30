@@ -25,4 +25,4 @@ fib_list' :: Integer -> [Integer] -> [Integer]
 fib_list' 0 list = reverse list
 fib_list' n [] = fib_list' (n-1) (1:[])
 fib_list' n (1:[]) = fib_list' (n-1) (1:1:[])
-fib_list' n (a:b:tl) = fib_list' (n-1) ((a+b):a:b:tl)
+fib_list' n list@(a:b:tl) = fib_list' (n-1) ((a+b):list)
